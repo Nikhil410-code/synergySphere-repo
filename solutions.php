@@ -26,7 +26,7 @@
   <!-- Navbar -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-indigo-700 font-bold text-xl">SynergySphere</a>
+      <a href="index.php" class="text-indigo-700 font-bold text-xl">SynergySphere</a>
       <nav class="space-x-6 font-medium text-gray-700 text-sm">
         <a href="index.php" class="nav-link">Home</a>
         <a href="solutions.php" class="nav-link text-indigo-600 font-semibold">Solutions</a>
