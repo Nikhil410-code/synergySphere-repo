@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             projects.push(project);
             localStorage.setItem("projects", JSON.stringify(projects));
 
-            window.location.href = "index.html";
+            window.location.href = "index.php";
         }
     </script>
 </body>
