@@ -1,3 +1,28 @@
+
+<?php include("db.php"); ?>
+<?php include("db.php"); ?>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $last_name  = $_POST['last_name'];
+    $email      = $_POST['email'];
+    $password   = password_hash($_POST['password'], PASSWORD_BCRYPT); // secure password
+
+    $sql = "INSERT INTO users (first_name, last_name, email, password) 
+            VALUES ('$first_name', '$last_name', '$email', '$password')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Signup successful!'); window.location='login.php';</script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+?>
+
+<!-- Your existing signup HTML goes here -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

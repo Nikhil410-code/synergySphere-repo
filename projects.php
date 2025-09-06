@@ -1,3 +1,19 @@
+
+<?php
+include("db.php");
+
+$result = mysqli_query($conn, "SELECT * FROM projects ORDER BY deadline ASC");
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='card'>";
+    echo "<h3>" . htmlspecialchars($row['name']) . "</h3>";
+    echo "<p>" . htmlspecialchars($row['description']) . "</p>";
+    echo "<p>Manager: " . htmlspecialchars($row['manager']) . "</p>";
+    echo "<p>Deadline: " . $row['deadline'] . "</p>";
+    echo "<span>" . $row['priority'] . " Priority</span>";
+    echo "</div>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

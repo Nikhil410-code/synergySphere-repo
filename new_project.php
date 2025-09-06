@@ -1,3 +1,25 @@
+<?php
+include("db.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $tags = mysqli_real_escape_string($conn, $_POST['tags']);
+    $manager = mysqli_real_escape_string($conn, $_POST['manager']);
+    $deadline = $_POST['deadline'];
+    $priority = $_POST['priority'];
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+
+    $sql = "INSERT INTO projects (name, tags, manager, deadline, priority, description) 
+            VALUES ('$name', '$tags', '$manager', '$deadline', '$priority', '$description')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Project added!'); window.location='projects.php';</script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

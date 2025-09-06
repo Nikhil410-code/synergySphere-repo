@@ -1,3 +1,5 @@
+<?php include("db.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,13 +28,13 @@
   <!-- Navbar -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-indigo-700 font-bold text-xl">SynergySphere</a>
+      <a href="index.php" class="text-indigo-700 font-bold text-xl">SynergySphere</a>
       <nav class="space-x-6 font-medium text-gray-700 text-sm">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="work.html" class="nav-link">Work</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="login.html" class="nav-link text-indigo-600 font-semibold">Login</a>
+        <a href="index.php" class="nav-link">Home</a>
+        <a href="solutions.php" class="nav-link">Solutions</a>
+        <a href="work.php" class="nav-link">Work</a>
+        <a href="about.php" class="nav-link">About</a>
+        <a href="login.php" class="nav-link text-indigo-600 font-semibold">Login</a>
       </nav>
     </div>
   </header>
