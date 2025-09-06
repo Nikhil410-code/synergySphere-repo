@@ -28,11 +28,11 @@
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="text-indigo-700 font-bold text-xl">SynergySphere</a>
       <nav class="space-x-6 font-medium text-gray-700 text-sm">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="solutions.html" class="nav-link text-indigo-600 font-semibold">Solutions</a>
-        <a href="work.html" class="nav-link">Work</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="login.html" class="nav-link">Login</a>
+        <a href="index.php" class="nav-link">Home</a>
+        <a href="solutions.php" class="nav-link text-indigo-600 font-semibold">Solutions</a>
+        <a href="work.php" class="nav-link">Work</a>
+        <a href="about.php" class="nav-link">About</a>
+        <a href="login.php" class="nav-link">Login</a>
       </nav>
     </div>
   </header>
@@ -104,18 +104,18 @@
       <div>
         <h4 class="font-semibold text-gray-900 mb-4">Quick Links</h4>
         <ul class="space-y-2">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="solutions.php">Solutions</a></li>
+          <li><a href="work.php">Work</a></li>
+          <li><a href="about.php">About</a></li>
         </ul>
       </div>
       <div>
         <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
         <ul class="space-y-2">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.php">About Us</a></li>
+          <li><a href="careers.php">Careers</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
       <div>
