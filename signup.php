@@ -179,11 +179,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <nav class="navbar">
     <h1>SynergySphere</h1>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="login.html">Login</a>
+      <a href="index.php">Home</a>
+      <a href="solutions.php">Solutions</a>
+      <a href="work.php">Work</a>
+      <a href="about.php">About</a>
+      <a href="login.php">Login</a>
     </div>
   </nav>
 
@@ -199,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Sign Up</button>
       </form>
       <div class="alt-text">
-        Already have an account? <a href="login.html">Log in</a>
+        Already have an account? <a href="login.php">Log in</a>
       </div>
     </div>
   </div>
@@ -208,16 +208,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <footer>
     <div>
       <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
+      <a href="index.php">Home</a>
+      <a href="solutions.php">Solutions</a>
+      <a href="work.php">Work</a>
+      <a href="about.php">About</a>
     </div>
     <div>
       <h4>Company</h4>
-      <a href="about.html">About Us</a>
-      <a href="careers.html">Careers</a>
-      <a href="contact.html">Contact</a>
+      <a href="about.php">About Us</a>
+      <a href="careers.php">Careers</a>
+      <a href="contact.php">Contact</a>
     </div>
     <div>
       <h4>Connect with Us</h4>
