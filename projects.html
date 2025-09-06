@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 flex h-screen">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="w-64 bg-white shadow-md flex flex-col justify-between">
+    <div>
+      <div class="px-6 py-4 border-b">
+        <h1 class="text-xl font-bold text-indigo-600">Company</h1>
+      </div>
+      <nav class="mt-4 px-6 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 font-medium">
+          <i data-feather="folder" class="inline w-4 h-4 mr-2"></i> Projects
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t">
+      <button id="themeToggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300 mb-3">
+        <i data-feather="sun" class="w-5 h-5 text-gray-600"></i>
+      </button>
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold">U</div>
+        <div class="ml-3">
+          <p class="text-sm font-medium">Test User</p>
+          <p class="text-xs text-gray-500">user@mail.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== Main Content ===== -->
+  <main class="flex-1 flex flex-col">
+
+    <!-- Top Bar -->
+    <header class="flex justify-between items-center p-4 bg-white shadow-sm">
+      <div class="text-sm text-gray-600">> Projects</div>
+
+      <div class="flex items-center gap-3">
+        <!-- Search -->
+        <div class="relative">
+          <input type="text" id="searchInput" placeholder="Search..." class="pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none">
+          <i data-feather="search" class="absolute left-3 top-2.5 w-4 h-4 text-gray-400"></i>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="relative">
+          <select id="sortBy" class="pl-3 pr-8 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none text-gray-700">
+            <option value="" disabled selected>Sort By</option>
+            <option value="priority"> Priority</option>
+            <option value="start_date"> Start Date</option>
+            <option value="end_date"> End Date</option>
+          </select>
+        </div>
+
+        <!-- Add Project Button -->
+        <a href="new_project.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 flex items-center gap-2">
+          <i data-feather="plus-circle" class="w-4 h-4"></i> Add New Project
+        </a>
+      </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <section id="projectGrid" class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto"></section>
+  </main>
+
+  <script>
+    feather.replace();
+
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const icon = themeToggle.querySelector("i");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("bg-gray-900");
+      document.body.classList.toggle("text-white");
+      if (document.body.classList.contains("bg-gray-900")) {
+        icon.setAttribute("data-feather", "moon");
+      } else {
+        icon.setAttribute("data-feather", "sun");
+      }
+      feather.replace();
+    });
+
+    // Load projects from localStorage
+    const projectGrid = document.getElementById("projectGrid");
+    function loadProjects() {
+      projectGrid.innerHTML = "";
+      const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+      projects.forEach((p, index) => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-lg shadow p-4";
+        card.setAttribute("data-priority", p.priority);
+        card.setAttribute("data-start", "2025-01-01");
+        card.setAttribute("data-end", p.deadline);
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center mb-3">
+            <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">${p.status}</span>
+            <button><i data-feather="more-vertical" class="w-4 h-4 text-gray-400"></i></button>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Project: ${p.name}</h3>
+          <p class="text-sm text-gray-500 mb-3">${p.description}</p>
+          <img src="${p.image}" alt="Preview" class="rounded-md mb-3">
+
+          <div class="flex flex-wrap gap-2 mb-3">
+            ${p.tags.map(tag => `<span class="px-2 py-1 text-xs bg-indigo-100 text-indigo-700 rounded">${tag.trim()}</span>`).join("")}
+          </div>
+
+          <div class="flex justify-between text-xs text-gray-500">
+            <span><i data-feather="user" class="inline w-3 h-3 mr-1"></i> Manager: ${p.manager}</span>
+            <span><i data-feather="calendar" class="inline w-3 h-3 mr-1"></i> Deadline: ${p.deadline}</span>
+          </div>
+
+          <div class="mt-2">
+            <span class="px-2 py-1 text-xs ${p.priority === "High" ? "bg-red-100 text-red-700" : p.priority === "Medium" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700"} rounded">${p.priority} Priority</span>
+          </div>
+        `;
+        projectGrid.appendChild(card);
+      });
+
+      feather.replace();
+    }
+
+    loadProjects();
+
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const query = this.value.toLowerCase();
+      Array.from(projectGrid.children).forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query) ? "" : "none";
+      });
+    });
+
+    // Sorting functionality
+    const sortBy = document.getElementById("sortBy");
+    sortBy.addEventListener("change", () => {
+      const projects = Array.from(projectGrid.children);
+      const criteria = sortBy.value;
+
+      projects.sort((a, b) => {
+        if (criteria === "priority") {
+          const order = { "High": 1, "Medium": 2, "Low": 3 };
+          return order[a.dataset.priority] - order[b.dataset.priority];
+        } else if (criteria === "start_date") {
+          return new Date(a.dataset.start) - new Date(b.dataset.start);
+        } else if (criteria === "end_date") {
+          return new Date(a.dataset.end) - new Date(b.dataset.end);
+        }
+      });
+
+      projects.forEach(p => projectGrid.appendChild(p));
+    });
+  </script>
+</body>
+</html>
